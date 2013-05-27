@@ -1,0 +1,9 @@
+This is a python application designed to help corporations manage their supplies. Note that all material requirements assume no researched blueprints and no skills, so these are worst-case numbers but will be sufficient to keep your hangar full.
+Requirements:
+-python 2
+-The Python MySQLdb module
+-A running MySQL instance with a database containing the latest CCP data dump (I recommend http://www.fuzzwork.co.uk/dump/)
+You set variables such as database name, MySQL user/password, and API key information in evestock.conf.
+A sample requirements file can be found at sample.csv. The file is a list with three fields: item name, desired quantity, and whether the item is something you want to build (1 for yes, 0 for no). If the field is set to 1, your shopping list will have the material requirements added, else evestock will just add the desired number of that item. Please note: this is currently only compatible with basic material requirements, and does not yet support partially-used items such as RAMs.
+
+Please direct any questions, suggestions, or patches to gibbous.outamon@gmail.com. Enjoy!
