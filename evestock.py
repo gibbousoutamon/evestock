@@ -78,7 +78,6 @@ for key in wantlist.keys():
     wantlist[key][1] = quantity
     if quantity > 0:  # If we have a deficit
         # If this item is something we can build, get the material requirements
-        print wantlist[key],key
 	if wantlist[key][2] == 1:
 	    # First, the basic materials
             cur.execute(
