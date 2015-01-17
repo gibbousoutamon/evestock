@@ -4,6 +4,15 @@ CORP_KEYID=
 #The API key's vcode
 CORP_VCODE=
 
+#Location of the file with your list of desired items
+WANT_FILE=
+#File to print the shopping lists to
+OUT_FILE=shoppinglist.txt
+
+#Database to use, valid options are mysql and sqlite
+DB=
+
+[mysql]
 #The username to be used in accessing the database
 MYSQL_USER=
 #The password
@@ -13,7 +22,6 @@ MYSQL_DB=
 #The host the mysql server is running on. Please note, we have not tested remote mysql servers yet.
 MYSQL_HOST=localhost
 
-#Location of the file with your list of desired items
-WANT_FILE=
-#File to print the shopping lists to
-OUT_FILE=shoppinglist.txt
+[sqlite]
+# Path to the database file
+DB_PATH=

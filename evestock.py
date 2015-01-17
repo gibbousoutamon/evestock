@@ -3,7 +3,6 @@
 # desired assets, and report how much needs to be built/bought
 
 import eveapi
-import MySQLdb
 import csv
 import ConfigParser
 
@@ -33,13 +32,23 @@ with open(config.get("evestock", "WANT_FILE"), 'rb') as csvfile:
     for row in reader:
         wantlist[row[0]] = [row[1], row[2]]
 
-print "Connecting to MySQL db"
-db = MySQLdb.connect(
-    host=config.get("evestock", "MYSQL_HOST"),
-    user=config.get("evestock", "MYSQL_USER"),
-    passwd=config.get("evestock", "MYSQL_PW"),
-    db=config.get("evestock", "MYSQL_DB"))
-cur = db.cursor()
+if config.get("evestock", "DB") == "mysql":
+    import MySQLdb
+    print "Connecting to MySQL db"
+    db = MySQLdb.connect(
+        host=config.get("evestock", "MYSQL_HOST"),
+        user=config.get("evestock", "MYSQL_USER"),
+        passwd=config.get("evestock", "MYSQL_PW"),
+        db=config.get("evestock", "MYSQL_DB"))
+    cur = db.cursor()
+elif config.get("evestock", "DB") == "sqlite":
+    import sqlite3
+    print "Connectiong to SQLite db"
+    db = sqlite3.connect(config.get("sqlite", "DB_PATH")
+    cur = db.cursor()
+else:
+    print "Invalid database type selected, exiting"
+    exit(1)
 
 print "Connecting to EVE API"
 try:
